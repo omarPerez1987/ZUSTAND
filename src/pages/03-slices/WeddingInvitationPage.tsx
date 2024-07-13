@@ -20,6 +20,7 @@ export const WeddingInvitationPage = () => {
                   >
                     Primer Nombre
                   </label>
+
                   <input
                     type="text"
                     name="firstName"
