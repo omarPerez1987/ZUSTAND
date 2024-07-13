@@ -1,9 +1,8 @@
-import { useShallow } from 'zustand/react/shallow';
-import { WhiteCard } from '../../components';
-import { useBearStore } from '../../stores/useBearsStore';
+import { useShallow } from 'zustand/react/shallow'
+import { WhiteCard } from '../../components'
+import { useBearStore } from '../../stores/useBearsStore'
 
 export const BearPage = () => {
-
   return (
     <>
       <h1>Contador de Osos</h1>
@@ -16,10 +15,9 @@ export const BearPage = () => {
         <PandaBearCard />
         <DisplayBearsCard />
       </div>
-
     </>
-  );
-};
+  )
+}
 
 const BlackBearCard = () => {
   const blackBears = useBearStore((state) => state.blackBears)
@@ -48,7 +46,6 @@ const PolarBearCard = () => {
         <span className="text-3xl mx-2 lg:mx-10"> {polarBears} </span>
         <button onClick={() => increasePolarBears(-1)}>-1</button>
       </div>
-
     </WhiteCard>
   )
 }
@@ -64,34 +61,34 @@ const PandaBearCard = () => {
         <span className="text-3xl mx-2 lg:mx-10"> {pandaBears} </span>
         <button onClick={() => increasePandaBears(-1)}>-1</button>
       </div>
-
     </WhiteCard>
   )
 }
 
 const DisplayBearsCard = () => {
-  const bears = useBearStore(useShallow(state => state.bears))
-  const addBears = useBearStore(state => state.addBear)
-  const cleanBears = useBearStore(state => state.clearBears)
+  const bears = useBearStore(useShallow((state) => state.bears))
+  const addBears = useBearStore((state) => state.addBear)
+  const cleanBears = useBearStore((state) => state.clearBears)
 
   return (
     <WhiteCard centered>
       <h2>Info Osos</h2>
 
       <div className="flex flex-col gap-2">
-        <div className='flex flex-col gap-2 mt-4'>
+        <div className="flex flex-col gap-2 mt-4">
           <button onClick={() => addBears()}> Agregar</button>
           <button onClick={() => cleanBears()}>Eliminar</button>
         </div>
-        {bears && (
+        {bears &&
           bears.map((bear, index) => (
-            <div key={index} className='flex py-2 my-2 border-indigo-600 justify-center border-2 rounded-xl'>
+            <div
+              key={index}
+              className="flex py-2 my-2 border-indigo-600 justify-center border-2 rounded-xl"
+            >
               <h3>Nombre: {bear.name}</h3>
             </div>
-          ))
-        )}
+          ))}
       </div>
-
     </WhiteCard>
   )
-} 
+}
